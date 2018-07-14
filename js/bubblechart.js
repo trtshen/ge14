@@ -18,29 +18,6 @@ $(document).ready(function() {
       .attr('height', height)
       .call(responsivefy);
 
-    function responsivefy(svg) {
-      // get container + svg aspect ratio
-      var container = d3.select(svg.node().parentNode),
-        width = parseInt(svg.style("width")),
-        height = parseInt(svg.style("height")),
-        aspect = width / height;
-
-      // add viewBox and preserveAspectRatio properties,
-      // and call resize so that svg resizes on inital page load
-      svg.attr("viewBox", "0 0 " + width + " " + height)
-        .attr("perserveAspectRatio", "xMinYMid")
-        .call(resize);
-
-      d3.select(window).on("resize." + container.attr("id"), resize);
-
-      // get width of container and resize svg to fit it
-      function resize() {
-        var targetWidth = parseInt(container.style("width"));
-        svg.attr("width", targetWidth);
-        svg.attr("height", Math.round(targetWidth / aspect));
-      }
-    }
-
     data.forEach(function(d) {
       d.par_code = d.par_code;
       d.state = d.state;

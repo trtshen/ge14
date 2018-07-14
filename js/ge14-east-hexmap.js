@@ -1,14 +1,4 @@
 $(document).ready(function() {
-
-  var margin = {
-      top: 10,
-      right: 10,
-      bottom: 10,
-      left: 10
-    },
-    width = ((window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) * 0.8) - margin.left - margin.right,
-    height = ((window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight) * 0.55) - margin.top - margin.bottom;
-
   // Create the svg element
   var mapContainer = d3
     .select('#ge14-east-map')
@@ -18,29 +8,6 @@ $(document).ready(function() {
     .append('g')
     // .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
     .call(responsivefy);
-
-  function responsivefy(svg) {
-    // get container + svg aspect ratio
-    var container = d3.select(svg.node().parentNode),
-      width = parseInt(svg.style("width")),
-      height = parseInt(svg.style("height")),
-      aspect = width / height;
-
-    // add viewBox and preserveAspectRatio properties,
-    // and call resize so that svg resizes on inital page load
-    svg.attr("viewBox", "0 0 " + width + " " + height)
-      .attr("perserveAspectRatio", "xMinYMid")
-      .call(resize);
-
-    d3.select(window).on("resize." + container.attr("id"), resize);
-
-    // get width of container and resize svg to fit it
-    function resize() {
-      var targetWidth = parseInt(container.style("width"));
-      svg.attr("width", targetWidth);
-      svg.attr("height", Math.round(targetWidth / aspect));
-    }
-  }
 
   d3.json('data/east.hexjson', function(error, hexjson) {
     // Render the hexes
