@@ -347,20 +347,20 @@
     <p class="uk-text-bold">Click to see Sabah and Sarawak's results in GE13 or GE14. Mouseover or tab on each constituency for details.</p>
   </div> -->
 
-  <div class="constChart-text-wrapper uk-section uk-section-default uk-text-center uk-container uk-container-small uk-margin-top">
-    <div id="ge13-east-map-wrapper" class="uk-display-block" uk-sticky="offset: 175; bottom: true" style="z-index: 0;">
+  <div id="ge1314" class="constChart-text-wrapper uk-section uk-section-default uk-text-center uk-container uk-container-small uk-margin-top">
+    <div id="ge13-east-map-wrapper" class="uk-display-block" uk-sticky="offset: 175; bottom: #east-1;" style="z-index: 0;">
       <div id="ge13-east-map" class=""></div>
     </div>
-    <div id="ge14-east-map-wrapper" class="hide-map uk-display-block" uk-sticky="offset: 175; bottom: true" style="z-index: 0;">
+    <div id="ge14-east-map-wrapper" class="uk-display-block" uk-sticky="offset: 175; top: #east-1; bottom: true;" style="z-index: 0;">
       <div id="ge14-east-map" class=""></div>
     </div>
-      <!-- <div id="ge13-east-map" class="" uk-sticky="offset: 175; bottom: true"></div> -->
-      <!-- <div id="ge14-east-map" class="hide-map" uk-sticky="offset: 175; bottom: true"></div> -->
-      <div id="east-1" class="scroll-text uk-container uk-container-small central-800" data-uk-parallax="opacity: 0,1; y: 100,0; viewport: 0.5">In GE13, the opposition were only able to win nine seats out of the 56 seats in Sabah and Sarawak.</div>
-      <div id="east-2" class="scroll-text uk-container uk-container-small central-800" data-uk-parallax="opacity: 0,1; y: 100,0; viewport: 0.5">In GE14, the winds of change blew strongly; BN lost 27 seats to PH, Warisan and two independent candidates, who joined PH after the election.</div>
-    </div>
+    <!-- <div id="ge13-east-map" class="" uk-sticky="offset: 175; bottom: true"></div> -->
+    <!-- <div id="ge14-east-map" class="hide-map" uk-sticky="offset: 175; bottom: true"></div> -->
+    <div id="east-1" class="scroll-text uk-container uk-container-small central-800" data-uk-parallax="opacity: 0,1; y: 100,0; viewport: 0.5">In GE13, the opposition were only able to win nine seats out of the 56 seats in Sabah and Sarawak.</div>
+    <div id="east-2" class="scroll-text uk-container uk-container-small central-800" data-uk-parallax="opacity: 0,1; y: 100,0; viewport: 0.5">In GE14, the winds of change blew strongly; BN lost 27 seats to PH, Warisan and two independent candidates, who joined PH after the election.</div>
+  </div>
 
-  <div class="uk-margin-top uk-container uk-container-small central-800">
+  <div id="before-mala" class="uk-margin-top uk-container uk-container-small central-800">
     <article class="uk-article">
 
       <p>Merdeka Centre’s Tan said that the outcome in Sabah and Sarawak was not due to the issue of 1MDB, but it was more about personalities and candidacies.</p>
@@ -507,7 +507,7 @@
     //   $('#ge14-east').addClass('hide-map');
     // });
 
-    $('#east-2').waypoint(function(direction) {
+    /*$('#east-2').waypoint(function(direction) {
       if (direction === 'down') {
         console.log('trigger me!');
         $('#ge13-east-map-wrapper').addClass('hide-map');
@@ -519,7 +519,7 @@
       }
     }, {
       offset: '40%'
-    });
+    });*/
 
   </script>
 

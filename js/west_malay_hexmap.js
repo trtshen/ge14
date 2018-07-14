@@ -17,19 +17,36 @@ $(document).ready(function() {
   var mapContainer = d3
     .select('#west-malay-hexmap')
     .append('svg')
-    .attr("width", width + margin.left + margin.right)
+    .attr("width", $(window).width()/2)
+    // .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
     // .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
     .call(responsivefy);
 
+
+  
+
   function responsivefy(svg) {
     // get container + svg aspect ratio
     var container = d3.select(svg.node().parentNode),
-      width = parseInt(svg.style("width")),
+      width = (parseInt(svg.style("width")) * 0.85),
       height = parseInt(svg.style("height")),
       aspect = width / height;
-
+    
+    // get width of container and resize svg to fit it
+    function resize(svg) {
+      /*if (e.currentTarget) {
+        var width = e.currentTarget.innerWidth;
+        console.log('innerWidth::', width);
+        svg.attr("width", (width/2));
+      } else {*/
+        var targetWidth = (parseInt(container.style("width")) * 0.85);
+        svg.attr("width", targetWidth);
+        svg.attr("height", Math.round(targetWidth / aspect));
+      // }
+    }
+    
     // add viewBox and preserveAspectRatio properties,
     // and call resize so that svg resizes on inital page load
     svg.attr("viewBox", "0 0 " + width + " " + height)
@@ -37,13 +54,6 @@ $(document).ready(function() {
       .call(resize);
 
     d3.select(window).on("resize." + container.attr("id"), resize);
-
-    // get width of container and resize svg to fit it
-    function resize() {
-      var targetWidth = parseInt(container.style("width"));
-      svg.attr("width", targetWidth);
-      svg.attr("height", Math.round(targetWidth / aspect));
-    }
   }
 
   var quantize = d3.scaleQuantize()

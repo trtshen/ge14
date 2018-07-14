@@ -26,20 +26,19 @@ $(document).ready(function() {
       height = parseInt(svg.style("height")),
       aspect = width / height;
 
-    // add viewBox and preserveAspectRatio properties,
-    // and call resize so that svg resizes on inital page load
-    svg.attr("viewBox", "0 0 " + width + " " + height)
-      .attr("perserveAspectRatio", "xMinYMid")
-      .call(resize);
-
-    d3.select(window).on("resize." + container.attr("id"), resize);
-
     // get width of container and resize svg to fit it
     function resize() {
       var targetWidth = parseInt(container.style("width"));
       svg.attr("width", targetWidth);
       svg.attr("height", Math.round(targetWidth / aspect));
     }
+    
+    // add viewBox and preserveAspectRatio properties,
+    // and call resize so that svg resizes on inital page load
+    svg.attr("viewBox", "0 0 " + width + " " + height)
+      .attr("perserveAspectRatio", "xMinYMid")
+      .call(resize);
+    d3.select(window).on("resize" + container.attr("id"), resize);
   }
 
   d3.json('data/east.hexjson', function(error, hexjson) {

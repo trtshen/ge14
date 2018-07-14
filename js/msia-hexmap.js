@@ -8,21 +8,22 @@ $(document).ready(function() {
       left: 10
     },
     width = 1400 - margin.left - margin.right,
-    height = 900 - margin.top - margin.bottom;
+    height = 900 - margin.top - margin.bottom,
+    chawWidth = $(window).width() / 2;
 
   // Create the svg element
   var svg = d3
     .select("#vis")
     .append("svg")
-    .attr("width", width + margin.left + margin.right)
+    .attr("width", chawWidth)
+    // .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    .attr("transform", "translate(" + margin.left/2 + "," + margin.top/2 + ")");
 
   d3.json("data/west.hexjson", function(error, hexjson) {
     // Render the hexes
-    var hexes = d3.renderHexJSON(hexjson, width, height);
-
+    var hexes = d3.renderHexJSON(hexjson, chawWidth, height);
     // Bind the hexes to g elements of the svg and position them
     var hexmap = svg
       .selectAll("g")
@@ -30,7 +31,9 @@ $(document).ready(function() {
       .enter()
       .append("g")
       .attr("transform", function(hex) {
-        return "translate(" + hex.x + "," + hex.y + ")";
+// console.log('hexes', hexes);
+console.log('hex', hex);
+        return "translate(" + hex.x/3 + "," + hex.y/3 + ")";
       });
 
     // Draw the polygons around each hex's centre
