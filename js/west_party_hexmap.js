@@ -4,7 +4,7 @@ $(document).ready(function() {
   var mapContainer = d3
     .select('#west-party-hexmap')
     .append('svg')
-    .attr("width", $(window).width()/2)
+    .attr("width", chawWidth)
     // .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
@@ -13,7 +13,7 @@ $(document).ready(function() {
 
   d3.json("data/west.hexjson", function(error, hexjson) {
     // Render the hexes
-    var hexes = d3.renderHexJSON(hexjson, width, height);
+    var hexes = d3.renderHexJSON(hexjson, (chawWidth * 0.8), height * 0.8);
 
     // Bind the hexes to g elements of the svg and position them
     var hexmap = mapContainer

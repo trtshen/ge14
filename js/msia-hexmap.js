@@ -14,7 +14,8 @@ $(document).ready(function() {
   var svg = d3
     .select("#vis")
     .append("svg")
-    .attr("width", width + margin.left + margin.right)
+    .attr("width", chawWidth + margin.left + margin.right)
+    // .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");

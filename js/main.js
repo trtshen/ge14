@@ -16,6 +16,8 @@ var margin = {
   width = ((window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) * 0.8) - margin.left - margin.right,
   height = ((window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight) * 0.8) - margin.top - margin.bottom;
 
+var chawWidth = ($(window).width() < 500) ? $(window).width() : $(window).width()/2;
+
 function responsivefy(svg) {
   // get container + svg aspect ratio
   var container = d3.select(svg.node().parentNode),
