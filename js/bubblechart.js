@@ -18,6 +18,44 @@ $(document).ready(function() {
       .attr('height', height)
       .call(responsivefy);
 
+    //annotation
+    var annotations = [
+      {
+        id: '#circlechart-1',
+        note: {
+          label: "Hi Lee!",
+          bgPadding: 120,
+          title: "Long Ger, Ni Hao :)"
+        },
+        //can use x, y directly instead of data
+        x: 400,
+        y: 179,
+        dy: 150,
+        dx: 200
+      },
+      {
+        id: '#circlechart-1',
+        note: {
+          label: "Hi Long!",
+          bgPadding: 120,
+          title: "Long Ger 2 :)"
+        },
+        //can use x, y directly instead of data
+        x: 200,
+        y: 80,
+        dy: 10,
+        dx: 100
+      }
+    ];
+
+    var makeAnnotations = d3.annotation()
+      // .editMode(true)
+      //also can set and override in the note.padding property
+      //of the annotation object
+      .notePadding(10)
+      .type(d3.annotationLabel)
+      .annotations(annotations);
+
     function responsivefy(svg) {
       // get container + svg aspect ratio
       var container = d3.select(svg.node().parentNode),
@@ -103,6 +141,11 @@ $(document).ready(function() {
       .attr('transform', 'translate(' + paddingLeft + ',' + 0 + ')')
       .call(yAxis)
       .attr('class', 'circle-y-axis');
+
+    // annotation
+    circleChart.append('g')
+      .attr("class", "annotation-group")
+      .call(makeAnnotations);
 
     // Grid
     yGridlines = d3.axisLeft(yScale)
